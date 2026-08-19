@@ -3,6 +3,7 @@ export type ServiceItem = {
 };
 
 export type ServiceCategory = {
+  description: string;
   id: string;
   title: string;
   items: ServiceItem[];

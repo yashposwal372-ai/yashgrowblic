@@ -2,6 +2,8 @@ import type { ServiceCategory } from "@/types/services";
 
 export const serviceCategories: ServiceCategory[] = [
   {
+    description:
+      "Intelligent products, assistants, and workflows designed to automate repetitive processes and improve digital experiences.",
     id: "ai-automation",
     title: "AI & Automation",
     items: [
@@ -15,6 +17,8 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
+    description:
+      "Modern websites, e-commerce experiences, portals, and scalable web applications built around clear business goals.",
     id: "web-development",
     title: "Web Development",
     items: [
@@ -28,6 +32,8 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
+    description:
+      "Purposeful mobile products for Android, iOS, and cross-platform experiences across business, commerce, and education.",
     id: "mobile-applications",
     title: "Mobile Applications",
     items: [
@@ -40,30 +46,8 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: "education-technology",
-    title: "Education Technology",
-    items: [
-      { name: "Online Course Platforms" },
-      { name: "Learning Management Systems" },
-      { name: "Quiz and Test Software" },
-      { name: "Online Examination Systems" },
-      { name: "Student Management Systems" },
-      { name: "College Management Portals" },
-    ],
-  },
-  {
-    id: "cybersecurity",
-    title: "Cybersecurity",
-    items: [
-      { name: "Security Monitoring Interfaces" },
-      { name: "Authentication Systems" },
-      { name: "Login Security Solutions" },
-      { name: "Password Management Product Interfaces" },
-      { name: "Security Dashboards" },
-      { name: "Cybersecurity Software Interfaces" },
-    ],
-  },
-  {
+    description:
+      "Custom business software, subscription products, SaaS systems, dashboards, and automation platforms.",
     id: "saas-software",
     title: "SaaS & Software",
     items: [
@@ -76,6 +60,36 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
+    description:
+      "Digital learning, examination, quiz, course, and student-management experiences for modern education.",
+    id: "education-technology",
+    title: "Education Technology",
+    items: [
+      { name: "Online Course Platforms" },
+      { name: "Learning Management Systems" },
+      { name: "Quiz and Test Software" },
+      { name: "Online Examination Systems" },
+      { name: "Student Management Systems" },
+      { name: "College Management Portals" },
+    ],
+  },
+  {
+    description:
+      "Software interfaces and product experiences for monitoring, authentication, password management, and security workflows.",
+    id: "cybersecurity",
+    title: "Cybersecurity",
+    items: [
+      { name: "Security Monitoring Interfaces" },
+      { name: "Authentication Systems" },
+      { name: "Login Security Solutions" },
+      { name: "Password Management Product Interfaces" },
+      { name: "Security Dashboards" },
+      { name: "Cybersecurity Software Interfaces" },
+    ],
+  },
+  {
+    description:
+      "Digital growth experiences supporting advertising, lead generation, landing-page performance, and marketing automation.",
     id: "digital-growth",
     title: "Digital Growth",
     items: [
@@ -87,6 +101,8 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
+    description:
+      "Ongoing maintenance, optimization, upgrades, bug fixing, and product support for evolving digital systems.",
     id: "growblic-care",
     title: "Growblic Care",
     items: [

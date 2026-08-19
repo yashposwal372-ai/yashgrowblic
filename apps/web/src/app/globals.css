@@ -403,7 +403,7 @@ canvas {
   top: 0;
   height: 4.75rem;
   border-bottom: 1px solid var(--border);
-  background: rgba(5, 7, 11, 0.76);
+  background: rgba(5, 7, 11, 0.92);
   backdrop-filter: blur(18px) saturate(125%);
   -webkit-backdrop-filter: blur(18px) saturate(125%);
 }
@@ -1000,7 +1000,409 @@ canvas {
   50% { opacity: 0.9; transform: scaleX(1); }
 }
 
+/* Services */
+.services {
+  scroll-margin-top: 2rem;
+  overflow: clip;
+  border-top: 1px solid var(--border);
+  padding-block: clamp(5rem, 6vw, 6rem) clamp(5.5rem, 7vw, 7rem);
+  background:
+    radial-gradient(circle at 82% 32%, rgba(59, 130, 246, 0.08), transparent 29%),
+    radial-gradient(circle at 67% 65%, rgba(139, 92, 246, 0.045), transparent 31%),
+    linear-gradient(180deg, var(--background) 0%, var(--background-secondary) 48%, var(--background) 100%);
+}
+
+.services::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  content: "";
+  mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 72%, transparent);
+  pointer-events: none;
+}
+
+.services .container {
+  position: relative;
+}
+
+.services__intro {
+  max-width: 64rem;
+}
+
+.services__intro .text-section-heading {
+  max-width: 56rem;
+}
+
+.services__intro .text-body-large {
+  max-width: 43rem;
+}
+
+.services__experience {
+  margin-top: clamp(2rem, 3vw, 3rem);
+}
+
+.services-explorer__desktop {
+  display: none;
+}
+
+.service-selector__label,
+.service-detail__topline,
+.service-detail__index {
+  color: var(--foreground-subtle);
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-selector__label {
+  margin-bottom: 1rem;
+}
+
+.service-selector__list {
+  border-top: 1px solid var(--border);
+}
+
+.service-selector__button {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 4.65rem;
+  grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: #8190a5;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color var(--transition-base),
+    padding-left var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.service-selector__button::after {
+  position: absolute;
+  right: 100%;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  content: "";
+  transition: right 320ms ease;
+}
+
+.service-selector__button:hover,
+.service-selector__button:focus-visible,
+.service-selector__button.is-active {
+  color: var(--foreground);
+  padding-left: 0.45rem;
+}
+
+.service-selector__button.is-active {
+  border-color: rgba(96, 165, 250, 0.24);
+  color: #ffffff;
+}
+
+.service-selector__button.is-active::after {
+  right: 0;
+}
+
+.service-selector__number {
+  color: #6f7f95;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  transition: color var(--transition-base);
+}
+
+.service-selector__button.is-active .service-selector__number {
+  color: var(--cyan);
+}
+
+.service-selector__title {
+  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
+  font-weight: 620;
+  letter-spacing: -0.025em;
+}
+
+.service-selector__button svg {
+  opacity: 0;
+  transform: translate(-0.35rem, 0.35rem);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.service-selector__button:hover svg,
+.service-selector__button:focus-visible svg,
+.service-selector__button.is-active svg {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.service-detail-panel {
+  min-width: 0;
+}
+
+.service-detail {
+  position: relative;
+  min-height: 40rem;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: clamp(1.25rem, 2vw, 1.75rem);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 42%),
+    rgba(9, 13, 22, 0.88);
+  box-shadow: 0 2rem 7rem rgba(0, 0, 0, 0.3);
+  padding: clamp(1.5rem, 2.3vw, 2rem);
+}
+
+.service-detail::before {
+  position: absolute;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 68%);
+  content: "";
+  top: -12rem;
+  right: -10rem;
+  pointer-events: none;
+}
+
+.service-detail__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.045) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  mask-image: linear-gradient(145deg, #000, transparent 58%);
+  pointer-events: none;
+}
+
+.service-detail__corner {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-color: rgba(96, 165, 250, 0.48);
+}
+
+.service-detail__corner--top {
+  top: 1rem;
+  right: 1rem;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.service-detail__corner--bottom {
+  bottom: 1rem;
+  left: 1rem;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.service-detail__topline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.35rem, 2.2vw, 1.75rem);
+}
+
+.service-detail__topline span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-light);
+}
+
+.service-detail__topline span:first-child::before {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0.7rem rgba(34, 211, 238, 0.48);
+  content: "";
+}
+
+.service-detail__heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.service-detail__index {
+  margin-bottom: 0.25rem;
+  color: var(--primary-light);
+}
+
+.service-detail__heading h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.8rem, 3.4vw, 3.25rem);
+  line-height: 1.06;
+}
+
+.service-detail__description {
+  position: relative;
+  max-width: 39rem;
+  margin: 1rem 0 1.15rem;
+  color: var(--foreground-muted);
+  font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.service-capabilities {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+  list-style: none;
+}
+
+.service-capabilities li {
+  display: grid;
+  min-height: 3.05rem;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: #c3ccda;
+  font-size: 0.88rem;
+  transition:
+    color var(--transition-base),
+    padding-left var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.service-capabilities li:hover {
+  border-color: var(--border-strong);
+  color: var(--foreground);
+  padding-left: 0.3rem;
+}
+
+.service-capabilities__number {
+  color: var(--foreground-subtle);
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.6rem;
+}
+
+.service-capabilities__marker {
+  width: 0.32rem;
+  height: 0.32rem;
+  border: 1px solid rgba(96, 165, 250, 0.52);
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.12);
+  box-shadow: 0 0 0.6rem rgba(59, 130, 246, 0.18);
+}
+
+.service-detail__cta {
+  position: relative;
+  width: fit-content;
+  margin-top: 1.2rem;
+  padding-inline: 0;
+  color: var(--foreground-muted);
+}
+
+.service-detail__cta:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.services-explorer__mobile {
+  border-top: 1px solid var(--border);
+}
+
+.service-accordion {
+  border-bottom: 1px solid var(--border);
+}
+
+.service-accordion h3 {
+  margin: 0;
+}
+
+.service-accordion h3 button {
+  display: grid;
+  width: 100%;
+  min-height: 4.75rem;
+  grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  color: var(--foreground-muted);
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--transition-base);
+}
+
+.service-accordion h3 button span:first-child {
+  color: var(--foreground-subtle);
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.68rem;
+}
+
+.service-accordion h3 button span:nth-child(2) {
+  font-size: clamp(1rem, 5vw, 1.2rem);
+  font-weight: 620;
+  letter-spacing: -0.02em;
+}
+
+.service-accordion h3 button svg {
+  transition: transform var(--transition-base);
+}
+
+.service-accordion.is-open h3 button {
+  color: var(--foreground);
+}
+
+.service-accordion.is-open h3 button span:first-child {
+  color: var(--cyan);
+}
+
+.service-accordion.is-open h3 button svg {
+  transform: rotate(180deg);
+}
+
+.service-accordion__panel {
+  overflow: hidden;
+}
+
+.service-accordion__panel > p {
+  margin: 0 0 1.5rem 3.15rem;
+  color: var(--foreground-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.service-accordion__panel .service-capabilities {
+  margin: 0 0 1.5rem 3.15rem;
+}
+
 /* Responsive adjustments */
+@media (min-width: 62rem) {
+  .services-explorer__desktop {
+    display: grid;
+    grid-template-columns: minmax(20rem, 0.82fr) minmax(0, 1.18fr);
+    align-items: start;
+    gap: clamp(3rem, 6vw, 7rem);
+  }
+
+  .services-explorer__mobile {
+    display: none;
+  }
+
+  .service-detail-panel {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
 @media (min-width: 68.75rem) {
   .desktop-nav { display: flex; }
   .mobile-nav { display: none; }
@@ -1067,6 +1469,15 @@ canvas {
   }
 
   .hero__scroll-cue { display: none; }
+
+  .services {
+    scroll-margin-top: 1.5rem;
+    padding-block: clamp(4.75rem, 10vw, 6rem);
+  }
+
+  .services__experience {
+    margin-top: 3rem;
+  }
 }
 
 @media (max-width: 30rem) {
@@ -1085,6 +1496,16 @@ canvas {
   .intelligence-field__path--three {
     display: none;
   }
+
+  .service-accordion__panel > p,
+  .service-accordion__panel .service-capabilities {
+    margin-left: 0;
+  }
+
+  .service-capabilities li {
+    grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+    font-size: 0.82rem;
+  }
 }
 
 /* Reduced motion */
@@ -1100,5 +1521,10 @@ canvas {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .viewport-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
