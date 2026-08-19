@@ -1,0 +1,6 @@
+name: growblicwebsite
+
+# The frontend application container will be added in a later phase.
+# Keeping an empty services map makes this foundation valid without referencing
+# a Dockerfile that does not exist yet.
+services: {}
