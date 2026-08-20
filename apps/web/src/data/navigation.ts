@@ -1,7 +1,7 @@
 import type { NavigationItem } from "@/types/navigation";
 
 export const navigationItems: NavigationItem[] = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "Products", href: "#products" },
   { label: "Industries", href: "#industries" },

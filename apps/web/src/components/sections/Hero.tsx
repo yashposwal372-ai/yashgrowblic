@@ -1,70 +1,27 @@
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 import { FadeIn } from "@/components/animation/FadeIn";
 import { StaggerReveal } from "@/components/animation/StaggerReveal";
-import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
-import { HeroVisual } from "./HeroVisual";
-
-const capabilities = [
-  "AI Solutions",
-  "Web & Mobile",
-  "SaaS Products",
-  "Automation",
-];
-
 export function Hero() {
   return (
-    <Section className="hero" id="home">
-      <div aria-hidden="true" className="hero__ambient" />
+    <Section className="hero cinematic-hero" id="home">
       <Container className="hero__container">
         <div className="hero__content">
-          <FadeIn delay={0.02}>
-            <Badge indicator>AI • Software • Automation</Badge>
-          </FadeIn>
-
-          <StaggerReveal
-            className="hero__headline"
-            gradientLine={1}
-            lines={[
-              "We build",
-              "digital products",
-              "that move businesses",
-              "forward.",
-            ]}
-          />
-
-          <FadeIn className="hero__support" delay={0.52}>
-            Growblic designs and builds modern AI solutions, software, web experiences, mobile apps, SaaS platforms, and automation systems.
-          </FadeIn>
-
+          <FadeIn className="hero__eyebrow" delay={0.02}>Growblic Digital World / 2026</FadeIn>
+          <StaggerReveal className="hero__headline" gradientLine={2} lines={["Building the", "digital systems", "behind modern", "business."]} />
+          <FadeIn className="hero__support" delay={0.52}>AI products, software, apps, automation, and digital platforms—designed, engineered, and cared for by Growblic.</FadeIn>
           <FadeIn className="hero__actions" delay={0.64}>
-            <ButtonLink href="#contact" size="large">
-              Start a Project
-              <ArrowUpRight aria-hidden="true" size={18} strokeWidth={1.8} />
-            </ButtonLink>
-            <ButtonLink href="#services" size="large" variant="secondary">
-              Explore Services
-              <ArrowRight aria-hidden="true" size={18} strokeWidth={1.8} />
-            </ButtonLink>
+            <ButtonLink href="#world" size="large">Enter the Journey <ArrowUpRight aria-hidden="true" size={18} strokeWidth={1.8} /></ButtonLink>
+            <ButtonLink href="#world" size="large" variant="secondary">Explore the World <ArrowDown aria-hidden="true" size={18} strokeWidth={1.8} /></ButtonLink>
           </FadeIn>
         </div>
-
-        <HeroVisual />
-
         <FadeIn className="hero__footer" delay={0.76}>
-          <ul aria-label="Growblic capabilities" className="capability-strip">
-            {capabilities.map((capability) => (
-              <li key={capability}>{capability}</li>
-            ))}
-          </ul>
-          <a className="hero__scroll-cue" href="#services">
-            <span>Scroll to explore</span>
-            <ArrowDown aria-hidden="true" size={15} />
-          </a>
+          <p className="hero__world-label"><span>Growblic Core / Online</span>One connected technology ecosystem</p>
+          <a className="hero__scroll-cue" href="#world"><span>Scroll to explore the Growblic world</span><ArrowDown aria-hidden="true" size={15} /></a>
         </FadeIn>
       </Container>
     </Section>
