@@ -28,7 +28,7 @@ export function FadeIn({
       transition={
         shouldReduceMotion
           ? { duration: 0 }
-          : { delay, duration: 0.55, ease: [0.22, 1, 0.36, 1] }
+          : { delay, duration: 0.4, ease: [0.2, 0.9, 0.25, 1] }
       }
     >
       {children}

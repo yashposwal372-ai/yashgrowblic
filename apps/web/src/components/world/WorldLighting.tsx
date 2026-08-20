@@ -1,10 +1,10 @@
 export function WorldLighting() {
   return (
     <>
-      <ambientLight intensity={2.1} />
-      <hemisphereLight color="#f7fbfe" groundColor="#9eb8ca" intensity={1.8} />
-      <directionalLight color="#ffffff" intensity={2.4} position={[6, 12, 8]} />
-      <directionalLight color="#a8c9df" intensity={0.65} position={[-8, 6, -5]} />
+      <ambientLight intensity={1.15} />
+      <hemisphereLight color="#f8fcff" groundColor="#86a5ba" intensity={1.25} />
+      <directionalLight castShadow color="#ffffff" intensity={2.85} position={[7, 13, 9]} shadow-bias={-.0004} shadow-mapSize-height={1024} shadow-mapSize-width={1024} />
+      <directionalLight color="#8eafc4" intensity={0.8} position={[-8, 7, -6]} />
     </>
   );
 }

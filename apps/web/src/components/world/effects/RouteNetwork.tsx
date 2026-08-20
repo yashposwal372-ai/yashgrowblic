@@ -6,6 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import { BufferGeometry, CatmullRomCurve3, Color, Line, LineBasicMaterial, Vector3 } from "three";
 
 import { worldStages } from "@/data/world";
+import { cinematicChapters } from "@/data/cinematicWorld";
 
 function RouteTrack({ color, index, offset, overview, progress, progressRef, route }: { color: string; index: number; offset: number; overview: boolean; progress: number; progressRef?: MutableRefObject<number>; route: [number, number, number][] }) {
   const line = useMemo(() => {
@@ -19,7 +20,8 @@ function RouteTrack({ color, index, offset, overview, progress, progressRef, rou
 
   useFrame(() => {
     const master = progressRef?.current ?? progress;
-    const scaled = Math.min(1, Math.max(0, (master - .12) / .17)) * worldStages.length;
+    const servicesRange = cinematicChapters[1].range;
+    const scaled = Math.min(1, Math.max(0, (master - servicesRange[0]) / (servicesRange[1]-servicesRange[0]))) * worldStages.length;
     const local = overview ? .08 : Math.min(1, Math.max(0, scaled - index));
     const currentLine = lineRef.current;
     const count = currentLine.geometry.getAttribute("position").count;

@@ -10,7 +10,6 @@ import { Hero } from "@/components/sections/Hero";
 import { GrowblicWorld } from "@/components/world/GrowblicWorld";
 import { ChapterOverlay } from "@/components/cinematic/ChapterOverlay";
 import { cinematicChapters, getArrivedCinematicChapter, getChapterArrivalProgress } from "@/data/cinematicWorld";
-import { worldStages } from "@/data/world";
 import { cn } from "@/lib/cn";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -35,6 +34,18 @@ export function ScrollWorld() {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+
+  useEffect(() => {
+    if (reducedMotion || !hero.current) return;
+    const content = hero.current.querySelector<HTMLElement>(".hero__content");
+    if (!content) return;
+    let targetX=0,targetY=0,currentX=0,currentY=0,frame=0;
+    const move=(event:PointerEvent)=>{targetX=event.clientX/window.innerWidth*2-1;targetY=event.clientY/window.innerHeight*2-1;};
+    const leave=()=>{targetX=0;targetY=0;};
+    const tick=()=>{currentX+=(targetX-currentX)*.055;currentY+=(targetY-currentY)*.055;content.style.setProperty("--hero-pointer-x",`${currentX*4}px`);content.style.setProperty("--hero-pointer-y",`${currentY*3}px`);frame=requestAnimationFrame(tick);};
+    window.addEventListener("pointermove",move,{passive:true});window.addEventListener("pointerleave",leave);frame=requestAnimationFrame(tick);
+    return()=>{window.removeEventListener("pointermove",move);window.removeEventListener("pointerleave",leave);cancelAnimationFrame(frame);};
+  },[reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -68,12 +79,9 @@ export function ScrollWorld() {
           chapterRef.current = nextChapter;
           setActiveIndex(nextChapter);
         }
-        const services = cinematicChapters[1];
-        const serviceArrival = services.range[0] + (services.range[1] - services.range[0]) * .72;
-        const serviceProgress = Math.min(.9999,Math.max(0,(progress-serviceArrival)/(services.range[1]-serviceArrival)));
-        const nextService = nextChapter===1 ? Math.floor(serviceProgress*worldStages.length) : -1;
+        const nextService = nextChapter===1 ? 0 : -1;
         if (arrivalRef.current !== nextService) { arrivalRef.current=nextService; setServiceIndex(nextService); }
-        const heroExit = Math.min(1, progress / .12);
+        const heroExit = Math.min(1, progress / .08);
         if (hero.current) {
           hero.current.style.opacity = String(1 - heroExit);
           hero.current.style.transform = `translateY(${-heroExit * 44}px) scale(${1 - heroExit * .035})`;

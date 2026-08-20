@@ -1901,9 +1901,22 @@ canvas {
 .hero__content { width: min(48vw,45rem); max-width: none; justify-self: start; align-self: center; text-align: left; transform-origin: left top; }
 .hero__eyebrow { margin: 0 0 1.25rem; color: #356dff; font-family: ui-monospace,"Cascadia Code",monospace; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .hero__headline { max-width: 45rem; margin: 0 0 1.25rem; color: #080a22; font-size: clamp(3rem,5vw,5.5rem); line-height: .9; letter-spacing: -.06em; }
+.hero__headline { perspective: 900px; }
+.hero__headline .headline-reveal__mask { perspective: 900px; transform-style: preserve-3d; }
+.hero__headline .headline-reveal__line { backface-visibility: hidden; will-change: transform,opacity,filter; }
 .hero__headline .gradient-text { background: linear-gradient(110deg,#356dff,#5946e8 58%,#18aeca); background-clip: text; -webkit-background-clip: text; }
 .hero__support { max-width: 34rem; margin-inline: 0; color: #4e5b6d; font-size: .94rem; }
 .hero__actions { justify-content: flex-start; }
+.cinematic-experience__hero .hero__content { transform: translate3d(var(--hero-pointer-x,0),var(--hero-pointer-y,0),0); will-change: transform; }
+.facility-label { display: block; border: 1px solid rgba(55,79,99,.16); border-radius: 999px; background: rgba(247,250,252,.88); box-shadow: 0 8px 24px rgba(72,101,121,.12); padding: .38rem .62rem; color: #18243a; font-family: ui-monospace,"Cascadia Code",monospace; font-size: .54rem; font-weight: 750; letter-spacing: .11em; white-space: nowrap; backdrop-filter: blur(10px); pointer-events: none; }
+.cinematic-hero .button { overflow: hidden; background-size: 180% 100%; transition: background-position .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease; }
+.cinematic-hero .button:hover { background-position: 100% 50%; box-shadow: 0 16px 34px rgba(53,109,255,.22); transform: translateY(-2px); }
+.cinematic-hero .button svg,.header__cta svg { transition: transform .2s ease; }
+.cinematic-hero .button:hover svg,.header__cta:hover svg { transform: translate(2px,-2px); }
+.desktop-nav__link { transition: color .2s ease,transform .2s ease,font-weight .2s ease; }
+.desktop-nav__link:hover { font-weight: 640; transform: translateY(-1px); }
+.header__cta { background-size: 180% 100%; transition: background-position .22s ease,box-shadow .22s ease,transform .22s ease; }
+.header__cta:hover { background-position: 100% 50%; box-shadow: 0 12px 28px rgba(53,109,255,.24); transform: translateY(-1px); }
 .hero__footer { border-color: rgba(55,79,99,.18); }
 .hero__world-label { display: grid; gap: .08rem; margin: 0; color: #526072; font-size: .72rem; }
 .hero__world-label span { color: #356dff; font-family: ui-monospace,"Cascadia Code",monospace; font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
@@ -1947,7 +1960,8 @@ canvas {
 /* V1.4 master cinematic sequence */
 .cinematic-experience { z-index: 2; }
 .cinematic-experience .world-story__pin::after { background: linear-gradient(90deg,rgba(220,234,244,.72),transparent 34%),linear-gradient(to top,rgba(220,234,244,.32),transparent 22%); }
-.cinematic-experience__hero { position: absolute; z-index: 3; inset: 0; transform-origin: center; will-change: opacity,transform; }
+.cinematic-experience__hero { position: absolute; z-index: 3; inset: 0; transform-origin: center; pointer-events: none; will-change: opacity,transform; }
+.cinematic-experience__hero .hero__actions,.cinematic-experience__hero .hero__footer { pointer-events: auto; }
 .cinematic-experience__hero .hero { height: 100%; min-height: 100%; background: transparent; }
 .cinematic-experience__hero .hero::before,.cinematic-experience__hero .hero::after { opacity: .22; }
 .cinematic-rail { position: absolute; z-index: 5; top: 50%; left: max(var(--page-padding),calc((100vw - var(--container-max))/2 + var(--page-padding))); display: grid; width: min(22rem,25vw); opacity: 0; transform: translateY(-50%); }

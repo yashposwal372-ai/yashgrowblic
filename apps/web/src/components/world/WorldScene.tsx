@@ -21,7 +21,7 @@ export function WorldScene({ activeIndex, overview, progress, progressRef, reduc
       <WorldLighting />
       <WorldCamera overview={overview} progress={progress} progressRef={progressRef} reducedMotion={reducedMotion} />
       <group>
-        <HomeDistrict simplified={simplified} />
+        <HomeDistrict reducedMotion={Boolean(reducedMotion)} simplified={simplified} />
         <RouteNetwork overview={overview} progress={progress} progressRef={progressRef} simplified={simplified} />
         <MasterRoutes progressRef={progressRef} simplified={simplified} />
         <WorldStructures activeIndex={activeIndex} progress={progress} progressRef={progressRef} simplified={simplified} />
