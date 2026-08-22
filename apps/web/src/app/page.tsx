@@ -1,13 +1,11 @@
 import { Header } from "@/components/layout/Header";
-import { ScrollWorld } from "@/components/scroll/ScrollWorld";
+import { Hero } from "@/components/sections/Hero";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        <ScrollWorld />
-      </main>
+      <main><Hero /></main>
     </>
   );
 }
