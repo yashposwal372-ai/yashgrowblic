@@ -1,11 +1,11 @@
 import { Header } from "@/components/layout/Header";
-import { Hero } from "@/components/sections/Hero";
+import { HomeServicesTransition } from "@/components/home/HomeServicesTransition";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main><Hero /></main>
+      <main><HomeServicesTransition /></main>
     </>
   );
 }
