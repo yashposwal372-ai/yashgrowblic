@@ -1,0 +1,26 @@
+@media(min-width:64.0625rem) and (prefers-reduced-motion:no-preference){
+  .care-control{--care-tilt-x:0deg;--care-tilt-y:0deg;--care-scroll:0px;overflow:visible;transform:perspective(1500px) rotateX(var(--care-tilt-x)) rotateY(var(--care-tilt-y)) translateY(var(--care-scroll));transform-style:preserve-3d;transition:transform .18s ease-out,box-shadow .3s ease;box-shadow:0 26px 70px rgba(24,44,68,.07)}
+  .care-control:hover{box-shadow:0 32px 80px rgba(24,44,68,.1)}
+  .care-control::before{position:absolute;z-index:0;inset:3.2rem 0 0;background:linear-gradient(115deg,rgba(255,255,255,.24),transparent 38%,rgba(111,145,165,.035));content:"";pointer-events:none;transform:translateZ(2px)}
+  .care-control>header{transform:translateZ(12px)}
+  .care-control__connections{transform:translateZ(18px)}
+  .care-control__glow{transform:translate(-50%,-45%) translateZ(22px)}
+  .care-control__hub{width:min(18rem,42%);min-height:11.75rem;border-color:rgba(8,24,46,.2);box-shadow:0 28px 65px rgba(24,44,68,.14),0 2px 3px rgba(255,255,255,.8) inset;transform:translate(-50%,-42%) translateZ(58px);animation:care-hub-depth-in .6s .18s cubic-bezier(.22,1,.36,1) both,care-hub-float 5s .85s ease-in-out infinite alternate;transition:box-shadow .28s ease}
+  .care-control__hub:hover{box-shadow:0 34px 75px rgba(24,44,68,.17),0 2px 3px rgba(255,255,255,.9) inset}
+  .care-control__nodes button{min-width:10.25rem;border-color:rgba(8,24,46,.13);background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(235,244,248,.92));box-shadow:0 16px 38px rgba(24,44,68,.09),0 1px rgba(255,255,255,.9) inset;transform:translateZ(34px);animation:care-node-in .5s cubic-bezier(.22,1,.36,1) both;transition:transform .24s ease,opacity .22s,border-color .22s,box-shadow .24s}
+  .care-control__nodes button:nth-child(1){animation-delay:.35s}.care-control__nodes button:nth-child(2){animation-delay:.4s}.care-control__nodes button:nth-child(3){animation-delay:.45s}.care-control__nodes button:nth-child(4){animation-delay:.5s}.care-control__nodes button:nth-child(5){animation-delay:.55s}
+  .care-control__nodes button:hover,.care-control__nodes button:focus-visible,.care-control__nodes button.is-active{box-shadow:0 22px 48px rgba(24,44,68,.13),0 0 0 1px rgba(214,64,72,.12) inset;transform:translateY(-4px) translateZ(42px)}
+  .care-control__nodes .node-5{transform:translateX(-50%) translateZ(34px)}.care-control__nodes .node-5:hover,.care-control__nodes .node-5:focus-visible,.care-control__nodes .node-5.is-active{transform:translate(-50%,-4px) translateZ(42px)}
+  .care-control__connections path{stroke:#8aa0b2;stroke-dasharray:1000;stroke-dashoffset:1000;animation:care-line-draw .55s .58s ease forwards}
+  .care-control__connections circle{opacity:0}.care-control__connections g.is-active circle{opacity:.8;filter:drop-shadow(0 1px 2px rgba(214,64,72,.22))}
+  .care-system__copy .v3-kicker{animation:care-copy-in .4s .05s ease both}.care-system__copy h3{overflow:hidden;animation:care-copy-in .55s .12s cubic-bezier(.22,1,.36,1) both}.care-system__copy>p:not(.v3-kicker){animation:care-copy-in .5s .22s ease both}.care-system__copy>a{animation:care-copy-in .45s .3s ease both}
+}
+@keyframes care-hub-depth-in{from{opacity:0;transform:translate(-50%,-38%) translateZ(20px) scale(.96)}to{opacity:1;transform:translate(-50%,-42%) translateZ(58px) scale(1)}}
+@keyframes care-hub-float{from{transform:translate(-50%,-42%) translateZ(58px)}to{transform:translate(-50%,calc(-42% - 4px)) translateZ(62px)}}
+@keyframes care-node-in{from{opacity:0;transform:translateY(10px) translateZ(10px)}}
+@keyframes care-line-draw{to{stroke-dashoffset:0}}
+@keyframes care-copy-in{from{opacity:0;transform:translateY(10px)}}
+.care-capabilities span{position:relative;transition:color .22s,background .22s}.care-capabilities span::after{position:absolute;bottom:-1px;left:50%;width:0;height:1px;background:#d64048;content:"";transition:left .22s,width .22s}.care-capabilities span:hover{background:rgba(255,255,255,.28);color:#08182e}.care-capabilities span:hover::after{left:36%;width:28%}
+@media(max-width:64rem){.care-control{transform:none!important}}
+@media(max-width:47.9375rem){.care-control__nodes .node-5{transform:none}}
+@media(prefers-reduced-motion:reduce){.care-control,.care-control__hub,.care-control__nodes button,.care-control__connections path,.care-system__copy>*{animation:none!important;transform:none;transition:none}.care-control__hub{transform:translate(-50%,-42%)}.care-control__nodes .node-5{transform:translateX(-50%)}}

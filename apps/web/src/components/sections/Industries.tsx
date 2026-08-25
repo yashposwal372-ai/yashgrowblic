@@ -1,26 +1,26 @@
-import { ViewportReveal } from "@/components/animation/ViewportReveal";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+"use client";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Check, Factory, GraduationCap, HeartPulse, Landmark, ShoppingBag, Workflow } from "lucide-react";
+import Image from "next/image";
+import { useRef, useState, type PointerEvent } from "react";
 
-import { IndustriesExplorer } from "./IndustriesExplorer";
+const industries = [
+  { name: "E-commerce & Retail", description: "Connected commerce, operations and customer experiences.", visualChallenge: "Disconnected journeys make growth expensive.", approach: "Connect commerce, automation and customer insight.", capabilities: ["Commerce", "Automation", "Analytics"], image: "/images/service-building-02.png", position: "50% 54%", icon: ShoppingBag },
+  { name: "Education & EdTech", description: "Learning platforms, assessment systems and student experiences.", visualChallenge: "Disconnected learning journeys obscure progress.", approach: "Connect learning, assessment and administration.", capabilities: ["Learning", "Assessment", "Portals"], image: "/images/growblic-tech-campus.png", position: "69% 54%", icon: GraduationCap },
+  { name: "SaaS & Startups", description: "Scalable digital products designed for rapid iteration and growth.", visualChallenge: "Growth exposes disconnected product systems.", approach: "Build a scalable core for product and operations.", capabilities: ["Product", "Platform", "Growth"], image: "/images/growblic-building-02.png", position: "50% 48%", icon: Workflow },
+  { name: "Professional Services", description: "Connected workflows for teams, clients and delivery.", visualChallenge: "Manual delivery slows teams and clients.", approach: "Connect client experience, workflow and delivery.", capabilities: ["Workflow", "Client UX", "AI"], image: "/images/growblic-services-district.png", position: "58% 54%", icon: Landmark },
+  { name: "Enterprise & Operations", description: "Operational systems for complex internal processes.", visualChallenge: "Complex handoffs reduce operational visibility.", approach: "Unify operations, approvals and insight.", capabilities: ["Integration", "Operations", "Data"], image: "/images/growblic-home-approved.png", position: "61% 56%", icon: Factory },
+  { name: "Healthcare Digital Experiences", description: "Accessible digital experiences for healthcare organisations.", visualChallenge: "Fragmented journeys make access harder.", approach: "Connect access, experience and administration.", capabilities: ["Experience", "Security", "Access"], image: "/images/growblic-tech-campus.png", position: "82% 48%", icon: HeartPulse },
+] as const;
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Industries() {
-  return (
-    <Section className="industries" id="industries">
-      <Container>
-        <ViewportReveal>
-          <SectionHeading
-            className="industries__intro"
-            description="We adapt design and engineering to the workflows, users, and operational realities of each business—not a one-size-fits-all template."
-            eyebrow="Industries"
-            title={<>Different industries. <span className="gradient-text">One product mindset.</span></>}
-          />
-        </ViewportReveal>
-        <ViewportReveal className="industries__experience" delay={0.12}>
-          <IndustriesExplorer />
-        </ViewportReveal>
-      </Container>
-    </Section>
-  );
+  const [active, setActive] = useState(2); const visualRef = useRef<HTMLDivElement>(null); const reduceMotion = useReducedMotion(); const item = industries[active]; const ActiveIcon = item.icon;
+  function handlePointerMove(event: PointerEvent<HTMLDivElement>) { const visual = visualRef.current; if (!visual || event.pointerType === "touch" || reduceMotion) return; const rect = visual.getBoundingClientRect(); const x = (event.clientX - rect.left) / rect.width - .5; const y = (event.clientY - rect.top) / rect.height - .5; visual.style.setProperty("--industry-ry", `${x * 3.6}deg`); visual.style.setProperty("--industry-rx", `${y * -2.4}deg`); visual.style.setProperty("--industry-y", `${y * -8}px`); }
+  return <section className="v3-industries" id="industries"><div className="v3-shell">
+    <div className="v3-industries__heading"><motion.div initial={reduceMotion ? false : { opacity: 0, y: 12 }} transition={{ duration: .45, ease }} viewport={{ once: true }} whileInView={{ opacity: 1, y: 0 }}><p className="v3-kicker">Industries / Operational context</p><div className="v3-industries__title-mask"><h2>Built for<br />real operations<span>.</span></h2></div></motion.div><motion.div className="v3-industries__statement" initial={reduceMotion ? false : { opacity: 0, y: 12 }} transition={{ delay: .12, duration: .5, ease }} viewport={{ once: true }} whileInView={{ opacity: 1, y: 0 }}><i /><p>Technology should fit the business, not force the business to fit the software.</p><small>Connected systems shaped around how each industry actually operates.</small></motion.div></div>
+    <div className="v3-industries__experience"><motion.div className="v3-industry-visual" initial={reduceMotion ? false : { opacity: 0, scale: 1.035, y: 20, rotateY: -1.5 }} onPointerLeave={() => visualRef.current?.removeAttribute("style")} onPointerMove={handlePointerMove} ref={visualRef} transition={{ duration: .8, ease }} viewport={{ amount: .2, once: true }} whileInView={{ opacity: 1, scale: 1, y: 0, rotateY: 0 }}><AnimatePresence mode="wait"><motion.div animate={{ opacity: 1, scale: 1, y: 0 }} className={`v3-industry-visual__image visual-${active + 1}`} exit={reduceMotion ? undefined : { opacity: 0, scale: .99 }} initial={reduceMotion ? false : { opacity: 0, scale: 1.015, y: 8 }} key={item.name} transition={{ duration: .32, ease }}><Image alt={`${item.name} operational architecture`} fill sizes="(max-width: 960px) 100vw, 58vw" src={item.image} style={{ objectPosition: item.position }} /></motion.div></AnimatePresence><div className="v3-industry-visual__grid" /><div className="v3-industry-visual__label"><span>Operational context / 0{active + 1}</span><strong>{item.name}</strong></div><div className="v3-industry-brief" key={item.name}><div><small>Challenge</small><p>{item.visualChallenge}</p></div><div><small>Growblic approach</small><p>{item.approach}</p></div><ul>{item.capabilities.map((tag) => <li key={tag}>{tag}</li>)}</ul></div></motion.div>
+      <div className="v3-industries__controls"><p className="v3-industry-selector__label">Industry system / 01—06</p><motion.div className="v3-industry-selector" initial="hidden" variants={{ hidden: {}, visible: { transition: { staggerChildren: .04 } } }} viewport={{ once: true }} whileInView="visible" role="tablist" aria-label="Industries">{industries.map((industry, index) => <motion.button aria-controls="industry-summary" aria-selected={active === index} className={active === index ? "is-active" : ""} key={industry.name} onClick={() => setActive(index)} role="tab" type="button" variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: .36, ease } } }}><span>0{index + 1}</span><strong>{industry.name}</strong><ArrowRight aria-hidden="true" size={16} />{active === index && <motion.i layoutId="industry-active" transition={{ duration: .3, ease }} />}</motion.button>)}</motion.div>
+        <AnimatePresence mode="wait"><motion.aside animate={{ opacity: 1, scale: 1, y: 0 }} className="v3-industry-summary" exit={reduceMotion ? undefined : { opacity: 0, scale: .99 }} id="industry-summary" initial={reduceMotion ? false : { opacity: 0, scale: 1.015, y: 8 }} key={item.name} role="tabpanel" transition={{ duration: .32, ease }}><div className="v3-industry-summary__copy"><header><span><ActiveIcon size={17} /></span><small>Industry / 0{active + 1}</small></header><h3>{item.name}</h3><p>{item.description}</p><ul>{item.capabilities.map((tag) => <li key={tag}><Check size={12} />{tag}</li>)}</ul><a href="#contact">Explore solutions <ArrowRight size={14} /></a></div><div className="v3-industry-orbit" aria-hidden="true"><i className="orbit orbit-outer"><b /></i><i className="orbit orbit-middle"><b /></i><i className="orbit orbit-inner"><b /></i><span className="orbit-node orbit-node-a" /><span className="orbit-node orbit-node-b" /><span className="orbit-node orbit-node-active" /><strong><ActiveIcon size={22} /></strong></div></motion.aside></AnimatePresence></div>
+    </div></div></section>;
 }
